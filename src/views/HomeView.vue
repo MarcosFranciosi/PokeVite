@@ -30,7 +30,7 @@ const selectPokemon = async (pokemon) => {
     .then(res => res.json())
     .then(res => pokemonSelected.value = res)
     .catch(err => alert(err))
-    .finally(() => loading.value = false) 
+    .finally(() => loading.value = false)     
 }
 
 </script>
@@ -46,6 +46,7 @@ const selectPokemon = async (pokemon) => {
             :xp="pokemonSelected?.base_experience"
             :height="pokemonSelected?.height"
             :image="pokemonSelected?.sprites.other.dream_world.front_default"
+            :abilities="pokemonSelected?.abilities"
             :loading="loading"/>
         </div>
 
@@ -75,5 +76,11 @@ const selectPokemon = async (pokemon) => {
   max-height: 75vh;
   overflow-y: scroll;
   overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+  .card-list {
+    max-height: 55vh;
+  }
 }
 </style>
